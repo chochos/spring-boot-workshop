@@ -38,23 +38,22 @@ repositories {
   maven { url "https://repo.spring.io/milestone" }
 }
 
-
 dependencies {
-  compile("org.springframework.boot:spring-boot-starter-data-jpa")
-  compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-  compile("org.springframework.boot:spring-boot-starter-web")
-  compile("org.codehaus.groovy:groovy:2.4.4")
+  compile "org.springframework.boot:spring-boot-starter-data-jpa",
+    "org.springframework.boot:spring-boot-starter-thymeleaf",
+    "org.springframework.boot:spring-boot-starter-web",
+    "org.springframework.boot:spring-boot-starter-actuator",
+    "org.springframework.boot:spring-boot-starter-security",
+    "org.codehaus.groovy:groovy:2.4.4"
+  testCompile "org.springframework.boot:spring-boot-starter-test"
 
   compile ("org.lightadmin:lightadmin:1.2.0.RC1")
-
   compile "org.apache.tomcat.embed:tomcat-embed-jasper:${project.tomcatVersion}"
-
   compile('com.domingosuarez:oneltico:0.1.2')
 
-  runtime("com.h2database:h2")
-  testCompile("org.springframework.boot:spring-boot-starter-test")
+  runtime "org.postgresql:postgresql:9.4-1201-jdbc41",
+	'org.flywaydb:flyway-core:3.2.1'
 }
-
 
 eclipse {
   classpath {
@@ -64,7 +63,7 @@ eclipse {
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '2.3'
+  gradleVersion = '2.5'
 }
 
 watch {
@@ -75,5 +74,5 @@ watch {
 }
 
 springBoot {
-  executable = true
+//  executable = true
 }
